@@ -1,0 +1,63 @@
+## Analytics
+
+
+# Data definition
+
+Data is gathered on a "per day" basis (stored locally and sent to server 
+the next day) or live* (real-time; needs more brainstorming).
+
+Data consists of a user action, a start and end timestamp, and optionally
+a content ID and/or content name.
+
+Last user action is always discarded after 5 minutes of inactivity unless
+the current page is a player.
+
+User actions reported (metrics):
+	- *watching channel
+	- browsing channels
+	- *watching movie
+	- browsing movies
+	- *watching series
+	- browsing series
+	- *listening to music
+	- browsing music
+	- *watching youtube
+	- browsing youtube
+	- *viewing tv guide
+	- *using app
+	- *viewing quick start
+	- *searching
+	- *changing settings
+	- *watching catch-up
+	- *watching recording
+	- browsing recordings
+	- watching advertisement (campaign stream)
+	- watching pre-roll advertisement
+	- viewing overlay advertisement
+	- viewing ticker advertisement
+
+
+### Data storage / POST to server format
+
+{
+	date: "month/day/year",
+	client: "test_client",
+	ui: "Akua",
+	version: "v1.2.3",
+	cms: "Dutch",
+	crm: "Premier",
+	city: "London",
+	state: "ENG",
+	country: "UK",
+	userID: 100000013,
+	device: "thd709qc",
+	network: {
+		speed: 21.67,
+		latency: 113
+	},
+	set: [
+		{type: "watching channel", id: 1, name: "media name", from: 1234234234, to: 1234545345},
+		{type: "listening to music", id: 13, name: "media name", from: 1234234234, to: 1234545345},
+		...
+	]
+}
